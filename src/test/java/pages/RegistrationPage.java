@@ -2,16 +2,17 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.TableComponent;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
 
-    private SelenideElement firstNameImput = $("#firstName"),
+    private final SelenideElement
+                            firstNameImput = $("#firstName"),
                             lastNameImput = $("#lastName"),
                             userEmailImput = $("#userEmail"),
                             userNumberImput = $("#userNumber"),
@@ -25,14 +26,18 @@ public class RegistrationPage {
                             addressInput = $("#currentAddress"),
                             stateDropdown = $("#state"),
                             cityDropdown = $("#city"),
-                            submit = $("#submit"),
-                            tableResponse = $(".table-responsive"),
-                            tableContext = $(".modal-content");
+                            submit = $("#submit");
 
     CalendarComponent calendarComponent = new CalendarComponent();
+    TableComponent tableComponent = new TableComponent();
 
     public RegistrationPage openPage () {
         open("/automation-practice-form");
+
+        return this;
+    }
+
+    public RegistrationPage removeBanner () {
         executeJavaScript("$('footer').remove();");
         executeJavaScript("$('#fixedban').remove();");
 
@@ -125,14 +130,13 @@ public class RegistrationPage {
     }
 
     public RegistrationPage checkPositiveResult(String key, String value) {
-        tableContext.shouldHave(text("Thanks for submitting the form"));
-        tableResponse.$(byText(key)).parent().shouldHave(text(value));
+        tableComponent.checkVisibleTable(key, value);
 
         return this;
     }
 
     public RegistrationPage checkNegativeResult() {
-        tableResponse.shouldNotBe(visible);
+        tableComponent.checkUnVisibleTable();
 
         return this;
     }
