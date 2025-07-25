@@ -12,6 +12,7 @@ public class RegistrationTestDemoQaPageObjects extends TestBase {
     @Test
     void fillingAllFieldsTest() {
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Johnny")
                 .setLastName("Silverhand")
                 .setUserEmail("samurai23@nightcity.com")
@@ -42,6 +43,7 @@ public class RegistrationTestDemoQaPageObjects extends TestBase {
     @Test
     void fillRequiredFieldsTest() {
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Johnny")
                 .setLastName("Silverhand")
                 .setUserEmail("samurai23@nightcity.com")
@@ -59,6 +61,7 @@ public class RegistrationTestDemoQaPageObjects extends TestBase {
     @Test
     void negativeValidationFillTest() {
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Johnny")
                 .setLastName("Silverhand")
                 .setUserEmail("samurai23@nightcity.com")
