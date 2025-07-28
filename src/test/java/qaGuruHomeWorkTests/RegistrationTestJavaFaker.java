@@ -5,7 +5,7 @@ import pages.RegistrationPage;
 import qaGuruHomeWorkTests.configuration.TestBase;
 
 
-public class RegistrationTestDemoQaPageObjects extends TestBase {
+public class RegistrationTestJavaFaker extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
