@@ -16,12 +16,13 @@ public class RegistrationPage {
                             lastNameImput = $("#lastName"),
                             userEmailImput = $("#userEmail"),
                             userNumberImput = $("#userNumber"),
-                            genderWrapper = $("[for=gender-radio-1]"),
+                            genderWrapper = $("#genterWrapper"),
                             calendarInput = $("#dateOfBirthInput"),
-                            subjectsInput = $(".subjects-auto-complete__menu"),
+                            subjectsInput = $("#subjectsInput"),
                             sportsHobbie = $("[for=hobbies-checkbox-1]"),
                             readingHobbie = $("[for=hobbies-checkbox-2]"),
                             musicHobbie = $("[for=hobbies-checkbox-3]"),
+                            hobbiesWrapper = $("#hobbiesWrapper"),
                             photoInput = $("#uploadPicture"),
                             addressInput = $("#currentAddress"),
                             stateDropdown = $("#state"),
@@ -68,8 +69,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setGender () {
-        genderWrapper.click();
+    public RegistrationPage setGender (String  value) {
+        genderWrapper.$(byText(value)).click();
 
         return this;
     }
@@ -82,9 +83,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setSubjects (String value) {
-        $("#subjectsInput").setValue("E");
-        $(".subjects-auto-complete__menu").shouldHave(text("Chemistry"));
-        subjectsInput.$(byText(value)).click();
+        subjectsInput.setValue(value).pressEnter();
 
         return this;
     }
@@ -93,6 +92,12 @@ public class RegistrationPage {
         sportsHobbie.click();
         readingHobbie.click();
         musicHobbie.click();
+
+        return this;
+    }
+
+    public RegistrationPage setRandomHobbies (String value) {
+        hobbiesWrapper.$(byText(value)).click();
 
         return this;
     }

@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import qaGuruHomeWorkTests.configuration.TestBase;
 
+import static qaGuruHomeWorkTests.configuration.TestData.userGender;
+
 
 public class RegistrationTestPageObjects extends TestBase {
 
@@ -17,7 +19,7 @@ public class RegistrationTestPageObjects extends TestBase {
                 .setLastName("Silverhand")
                 .setUserEmail("samurai23@nightcity.com")
                 .setUserNumber("2023002077")
-                .setGender()
+                .setGender(userGender)
                 .setDateOfBirth("16","November","1988")
                 .setSubjects("Chemistry")
                 .setAllHobbies()
@@ -48,7 +50,7 @@ public class RegistrationTestPageObjects extends TestBase {
                 .setLastName("Silverhand")
                 .setUserEmail("samurai23@nightcity.com")
                 .setUserNumber("2023002077")
-                .setGender()
+                .setGender(userGender)
                 .clickSubmit();
 
         registrationPage.checkPositiveResult("Student Name", "Johnny Silverhand")
@@ -66,7 +68,7 @@ public class RegistrationTestPageObjects extends TestBase {
                 .setLastName("Silverhand")
                 .setUserEmail("samurai23@nightcity.com")
                 .setUserNumber("")
-                .setGender()
+                .setGender(userGender)
                 .clickSubmit();
 
         registrationPage.checkNegativeResult();

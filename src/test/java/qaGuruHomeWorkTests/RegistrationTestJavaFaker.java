@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import qaGuruHomeWorkTests.configuration.TestBase;
 
+import static qaGuruHomeWorkTests.configuration.TestData.*;
+
 
 public class RegistrationTestJavaFaker extends TestBase {
 
@@ -13,18 +15,18 @@ public class RegistrationTestJavaFaker extends TestBase {
     void fillingAllFieldsTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Johnny")
-                .setLastName("Silverhand")
-                .setUserEmail("samurai23@nightcity.com")
-                .setUserNumber("2023002077")
-                .setGender()
-                .setDateOfBirth("16","November","1988")
-                .setSubjects("Chemistry")
-                .setAllHobbies()
-                .uploadPicture("jhony_silverhand.png")
-                .setCurrentAddress("North California, Night City")
-                .selectState("Uttar Pradesh")
-                .selectCity("Merrut")
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setUserEmail(userEmail)
+                .setUserNumber(userNumber)
+                .setGender(userGender)
+                .setDateOfBirth(day, month, year)
+                .setSubjects(subject)
+                .setRandomHobbies(hobby)
+                .uploadPicture(userAvatar)
+                .setCurrentAddress(currentAddress)
+                .selectState(state)
+                .selectCity(city)
                 .clickSubmit();
 
         registrationPage.checkPositiveResult("Student Name", "Johnny Silverhand")
@@ -48,7 +50,7 @@ public class RegistrationTestJavaFaker extends TestBase {
                 .setLastName("Silverhand")
                 .setUserEmail("samurai23@nightcity.com")
                 .setUserNumber("2023002077")
-                .setGender()
+                .setGender(userGender)
                 .clickSubmit();
 
         registrationPage.checkPositiveResult("Student Name", "Johnny Silverhand")
@@ -66,7 +68,7 @@ public class RegistrationTestJavaFaker extends TestBase {
                 .setLastName("Silverhand")
                 .setUserEmail("samurai23@nightcity.com")
                 .setUserNumber("")
-                .setGender()
+                .setGender(userGender)
                 .clickSubmit();
 
         registrationPage.checkNegativeResult();
