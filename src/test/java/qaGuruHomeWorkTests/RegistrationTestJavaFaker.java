@@ -29,16 +29,16 @@ public class RegistrationTestJavaFaker extends TestBase {
                 .selectCity(city)
                 .clickSubmit();
 
-        registrationPage.checkPositiveResult("Student Name", "Johnny Silverhand")
-                        .checkPositiveResult("Student Email", "samurai23@nightcity.com")
-                        .checkPositiveResult("Gender", "Male")
-                        .checkPositiveResult("Mobile", "2023002077")
-                        .checkPositiveResult("Date of Birth", "16 November,1988")
-                        .checkPositiveResult("Subjects", "Chemistry")
-                        .checkPositiveResult("Hobbies", "Sports, Reading, Music")
-                        .checkPositiveResult("Picture", "jhony_silverhand.png")
-                        .checkPositiveResult("Address", "North California, Night City")
-                        .checkPositiveResult("State and City", "Uttar Pradesh Merrut");
+        registrationPage.checkPositiveResult("Student Name", firstName + " " + lastName)
+                        .checkPositiveResult("Student Email", userEmail)
+                        .checkPositiveResult("Gender", userGender)
+                        .checkPositiveResult("Mobile", userNumber)
+                        .checkPositiveResult("Date of Birth", day + " " + month + "," + year)
+                        .checkPositiveResult("Subjects", subject)
+                        .checkPositiveResult("Hobbies", hobby)
+                        .checkPositiveResult("Picture", userAvatar)
+                        .checkPositiveResult("Address", currentAddress)
+                        .checkPositiveResult("State and City", state + " " + city);
 
     }
 
