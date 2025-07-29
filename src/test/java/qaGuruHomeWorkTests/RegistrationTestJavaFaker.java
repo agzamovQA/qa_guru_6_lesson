@@ -46,17 +46,17 @@ public class RegistrationTestJavaFaker extends TestBase {
     void fillRequiredFieldsTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Johnny")
-                .setLastName("Silverhand")
-                .setUserEmail("samurai23@nightcity.com")
-                .setUserNumber("2023002077")
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setUserEmail(userEmail)
+                .setUserNumber(userNumber)
                 .setGender(userGender)
                 .clickSubmit();
 
-        registrationPage.checkPositiveResult("Student Name", "Johnny Silverhand")
-                .checkPositiveResult("Student Email", "samurai23@nightcity.com")
-                .checkPositiveResult("Gender", "Male")
-                .checkPositiveResult("Mobile", "2023002077");
+        registrationPage.checkPositiveResult("Student Name", firstName + " " + lastName)
+                .checkPositiveResult("Student Email", userEmail)
+                .checkPositiveResult("Gender", userGender)
+                .checkPositiveResult("Mobile", userNumber);
 
     }
 
@@ -64,9 +64,9 @@ public class RegistrationTestJavaFaker extends TestBase {
     void negativeValidationFillTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Johnny")
-                .setLastName("Silverhand")
-                .setUserEmail("samurai23@nightcity.com")
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setUserEmail(userEmail)
                 .setUserNumber("")
                 .setGender(userGender)
                 .clickSubmit();
