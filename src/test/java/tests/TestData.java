@@ -11,7 +11,7 @@ public class TestData {
     public String userEmail = faker.internet().emailAddress();
     public String userNumber = faker.phoneNumber().subscriberNumber(10);
     public String userGender = faker.options().option("Male", "Female", "Other");
-    public String day = String.format("%02d", faker.number().numberBetween(1, 9));
+    public String day = String.format("%02d", faker.number().numberBetween(1, 30));
     public String month = faker.options().option(
                 "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
