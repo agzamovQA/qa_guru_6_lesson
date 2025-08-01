@@ -8,70 +8,70 @@ public class RegistrationTestJavaFaker extends TestBase {
 
     @Test
     void fillingAllFieldsTest() {
-        TestData testData = new TestData();
+        TestData td = new TestData();
 
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName(testData.getFirstName())
-                .setLastName(testData.getLastName())
-                .setUserEmail(testData.getUserEmail())
-                .setUserNumber(testData.getUserNumber())
-                .setGender(testData.getUserGender())
-                .setDateOfBirth(testData.getDay(), testData.getMonth(), testData.getYear())
-                .setSubjects(testData.getSubject())
-                .setRandomHobbies(testData.getHobby())
-                .uploadPicture(testData.getUserAvatar())
-                .setCurrentAddress(testData.getCurrentAddress())
-                .selectState(testData.getState())
-                .selectCity(testData.getCity())
+                .setFirstName(td.firstName)
+                .setLastName(td.lastName)
+                .setUserEmail(td.userEmail)
+                .setUserNumber(td.userNumber)
+                .setGender(td.userGender)
+                .setDateOfBirth(td.day, td.month, td.year)
+                .setSubjects(td.subject)
+                .setRandomHobbies(td.hobby)
+                .uploadPicture(td.userAvatar)
+                .setCurrentAddress(td.currentAddress)
+                .selectState(td.state)
+                .selectCity(td.city)
                 .clickSubmit();
 
         registrationPage.checkPositiveResult("Student Name",
-                        testData.getFirstName() + " " + testData.getLastName())
-                .checkPositiveResult("Student Email", testData.getUserEmail())
-                .checkPositiveResult("Gender", testData.getUserGender())
-                .checkPositiveResult("Mobile", testData.getUserNumber())
+                        td.firstName + " " + td.lastName)
+                .checkPositiveResult("Student Email", td.userEmail)
+                .checkPositiveResult("Gender", td.userGender)
+                .checkPositiveResult("Mobile", td.userNumber)
                 .checkPositiveResult("Date of Birth",
-                        testData.getDay() + " " + testData.getMonth() + "," + testData.getYear())
-                .checkPositiveResult("Subjects", testData.getSubject())
-                .checkPositiveResult("Hobbies", testData.getHobby())
-                .checkPositiveResult("Picture", testData.getUserAvatar())
-                .checkPositiveResult("Address", testData.getCurrentAddress())
+                        td.day + " " + td.month + "," + td.year)
+                .checkPositiveResult("Subjects", td.subject)
+                .checkPositiveResult("Hobbies", td.hobby)
+                .checkPositiveResult("Picture", td.userAvatar)
+                .checkPositiveResult("Address", td.currentAddress)
                 .checkPositiveResult("State and City",
-                        testData.getState() + " " + testData.getCity());
+                        td.state + " " + td.city);
     }
 
     @Test
     void fillRequiredFieldsTest() {
-        TestData testData = new TestData();
+        TestData td = new TestData();
 
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName(testData.getFirstName())
-                .setLastName(testData.getLastName())
-                .setUserEmail(testData.getUserEmail())
-                .setUserNumber(testData.getUserNumber())
-                .setGender(testData.getUserGender())
+                .setFirstName(td.firstName)
+                .setLastName(td.lastName)
+                .setUserEmail(td.userEmail)
+                .setUserNumber(td.userNumber)
+                .setGender(td.userGender)
                 .clickSubmit();
 
         registrationPage.checkPositiveResult("Student Name",
-                        testData.getFirstName() + " " + testData.getLastName())
-                .checkPositiveResult("Student Email", testData.getUserEmail())
-                .checkPositiveResult("Gender", testData.getUserGender())
-                .checkPositiveResult("Mobile", testData.getUserNumber());
+                        td.firstName + " " + td.lastName)
+                .checkPositiveResult("Student Email", td.userEmail)
+                .checkPositiveResult("Gender", td.userGender)
+                .checkPositiveResult("Mobile", td.userNumber);
     }
 
     @Test
     void negativeValidationFillTest() {
-        TestData testData = new TestData();
+        TestData td = new TestData();
 
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName(testData.getFirstName())
-                .setLastName(testData.getLastName())
-                .setUserEmail(testData.getUserEmail())
+                .setFirstName(td.firstName)
+                .setLastName(td.lastName)
+                .setUserEmail(td.userEmail)
                 .setUserNumber("")
-                .setGender(testData.getUserGender())
+                .setGender(td.userGender)
                 .clickSubmit();
 
         registrationPage.checkNegativeResult();
